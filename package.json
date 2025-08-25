@@ -1,6 +1,9 @@
 {
   "name": "ssr-hoffmanshop",
   "version": "0.0.0",
+   "engines": {
+    "node": "22.12.0"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -44,7 +47,7 @@
     "typescript": "~5.8.2"
   },
   "engines": {
-  "node": ">=18"
+  "node": ">=22.12"
 },
   "prettier": {
     "overrides": [

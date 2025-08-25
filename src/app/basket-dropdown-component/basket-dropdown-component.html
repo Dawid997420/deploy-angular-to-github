@@ -1,0 +1,30 @@
+<li class="nav-item basket-wrapper" (mouseenter)="showBasket = true" (mouseleave)="showBasket = false">
+  <img style="width: 4rem;" src="basket.png">
+  <span *ngIf="basketService.productsInTheBasket > 0" class="basket-count">
+    {{ basketService.productsInTheBasket }}
+  </span>
+
+  <!-- Dymek z koszykiem -->
+  <div class="basket-dropdown" *ngIf="showBasket && !inTheBasket">
+    <ng-container *ngIf="basketService.basket.length > 0; else emptyBasket">
+      <div *ngFor="let product of getGroupedBasket()" class="basket-item">
+        <div class="img-prod">
+            <img style="width: 4rem;" [src]="product.images[0].url"  [ngClass]="{ 'deselected': !product.checked }">
+        </div>
+        <div class="name-prod"  [ngClass]="{ 'deselected': !product.checked }">
+            {{ product.name }}
+        </div>
+        <div class="price-prod">
+           <div style="width: 100%; font-weight: 700;"  [ngClass]="{ 'deselected': !product.checked }" > {{ mathService.displayPrice(product.totalPrice) }} zł</div>
+           <div style="width: 100%;" [ngClass]="{ 'deselected': !product.checked }" >{{product.quantity }} szt </div>
+        </div>
+        </div>
+
+      <button class="go-basket" (click)="goToBasket()"  routerLink="/koszyk">Przejdź do koszyka</button>
+    </ng-container>
+
+    <ng-template #emptyBasket>
+      <div  class="empty-basket">Koszyk jest pusty</div>
+    </ng-template>
+  </div>
+</li>

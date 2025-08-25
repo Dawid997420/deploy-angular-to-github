@@ -1,0 +1,116 @@
+<nav class="navbar navbar-expand-lg navbar-style">
+
+    
+   <div class="container-fluid position-relative desktop-nav">
+    
+    <a class="navbar-brand" href="#">
+      <img style="height: 2.5rem; margin: 1rem 0.5rem 1rem 1rem;"   src="/LOGOOO.png">
+    </a>
+
+  
+
+    <div class="collapse navbar-collapse d-flex justify-content-between align-items-center w-100" id="navbarSupportedContent">
+     <!-- Lewa część -->
+     <ul class="navbar-nav mb-2 mb-lg-0 d-flex align-items-center">
+      <app-categories-dropdown-component></app-categories-dropdown-component>
+
+    
+    
+      <li class="nav-item ms-custom-promocje">
+        <a routerLink="/promocje" class="nav-link btn btn-promocje d-flex align-items-center" role="button">
+          <img src="PROM.png" class="icon-promocje me-2" alt="Ikona promocji">
+          Promocje
+        </a>
+      </li>
+    </ul>
+
+      <!-- Środek: Wyszukiwarka -->
+      <div class="wyszukiwarka-desktop position-absolute top-50 start-50 translate-middle" style="width: 400px;">
+        <form class="mx-auto" role="search">
+          <div class="input-group custom-search-group">
+            <input type="search" class="form-control custom-input" placeholder="Szukaj produktów..." aria-label="Search">
+            <button class="btn btn-black-white" type="submit">Szukaj</button>
+          </div>
+        </form>
+      </div>
+
+   
+
+
+
+      <!-- Prawa część -->
+      <ul class="navbar-nav">
+       
+
+          <app-basket-dropdown-component></app-basket-dropdown-component>
+            
+
+        <li class="nav-item" *ngIf="this.keycloakService.profile?.username == undefined">
+
+          <a (click)="login()" class="nav-link active pointer">Login</a>
+        </li>
+
+        <li class="nav-item"
+                  *ngIf="this.keycloakService.profile?.username=='adminek'"
+
+         >
+
+
+        <a class="nav-link" routerLink="/sprzedawca/panel-produktow">Sprzedawca</a>
+      </li>
+
+
+      </ul>
+    </div>
+  </div>
+
+
+
+
+  <div class="mobile-nav">
+
+
+  <div class="left-mob">
+         <app-categories-dropdown-component></app-categories-dropdown-component>
+
+
+    <a class="wyszukiwarka-mobilna"  *ngIf="!categoryService.showCategories">
+      <img src="lupa.webp" style="height: 2rem;" />
+    </a>
+  </div>
+
+  <a class="brand-mobile" href="#">
+    <img style="height: 2.5rem;" src="/LOGOOO.png">
+  </a>
+
+
+  <div class="right-mob" *ngIf="!categoryService.showCategories">
+
+    <a class="m-2"> 
+      <img  class="kosz" src="KOSZ-2.png" (click)="goToBasket()"  routerLink="/koszyk" style="height: 2rem;margin-bottom: 0.2rem;" /> 
+   
+        <span *ngIf="basketService.productsInTheBasket > 0" class="basket-count">
+        {{ basketService.productsInTheBasket }}
+      </span>
+
+    </a>
+
+      <a class="m-2"> 
+      <img  *ngIf="this.keycloakService.profile?.username!='adminek'" (click)="login()" class="kosz" src="LOGIN.png" style="height: 2rem;" /> 
+
+      <img  *ngIf="this.keycloakService.profile?.username=='adminek'" routerLink="/sprzedawca/panel-produktow" class="kosz" src="SHOP.png" style="height: 1.6rem;" /> 
+    </a>
+
+  </div>
+
+  
+
+
+</div>
+
+ 
+</nav>
+
+
+
+

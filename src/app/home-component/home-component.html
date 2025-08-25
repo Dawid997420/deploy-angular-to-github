@@ -1,0 +1,34 @@
+
+<div class="home">
+
+
+   <app-zalety-component></app-zalety-component> 
+
+
+    <div class="bestsellery">
+
+        <h2 class="polecane"> Polecane Produkty </h2>
+        
+         <a (click)="choseProduct(product)" [routerLink]="['/product', nameConverter(product.name)  , product.id ]" class="product" *ngFor="let product of products">
+            <img class="prodImg" [src]="product.images[0].url" loading="lazy" />
+            <div class="prod-info">
+              <p class="buy-info"> <span *ngIf="product.promotion" style="text-decoration: line-through; color: #7A7A7A; margin-right: 0.5rem;">
+                  {{ displayPrice(product.price) }} zł
+                </span></p>
+              <p class="price">
+              
+                <span *ngIf="product.promotion" style="color: #107B1E;">
+                  {{ displayPrice(product.promotionalPrice || 0) }} zł
+                </span>
+                <span *ngIf="!product.promotion">
+                  {{ displayPrice(product.price) }} zł
+                </span>
+              </p>
+              <h3 class="product-name">{{ getShortName(product.name) }}</h3>
+            </div>
+          </a>
+
+    </div> 
+
+</div>
+

@@ -1,0 +1,141 @@
+<div class="basket" #basketWrapper>
+
+  <div class="left-column">
+    <h5 style="font-weight: 800; text-transform: uppercase;">Twój koszyk</h5>
+
+    <div class="caly-koszyk">
+      <input
+        type="checkbox"
+        id="select-all"
+        class="styled-checkbox"
+        [checked]="selectAllChecked"
+        (change)="toggleSelectAll($event)"
+      />
+      <label for="select-all">Cały koszyk</label>
+    </div>
+
+<ng-container>
+      <div *ngFor="let product of groupedBasket" class="basket-line">
+        <div class="img-prod ">
+          <input
+            type="checkbox"
+            class="styled-checkbox"
+        [(ngModel)]="product.checked"
+ (change)="toggleSelection(product, product.quantity, $event)"
+          />
+
+          <img
+            style="width: 10rem;"
+            [src]="product.images[0].url"
+            alt="{{ product.name }}"
+            [ngClass]="{ 'deselected': !product.checked }"
+          />
+        </div>
+
+        <div class="details-prod" [ngClass]="{ 'deselected': !product.checked }">
+          <div class="name" >{{ product.name }}</div>
+        </div>
+
+        <div class="quantity-prod" [ngClass]="{ 'deselected': !product.checked }">
+          {{ product.quantity }} szt
+        </div>
+
+        <div class="price-prod" [ngClass]="{ 'deselected': !product.checked }">
+          <div>
+            {{ mathService.displayPrice(product.totalPrice) }} zł
+            <img
+              style="width: 1.2rem; margin-top: -0.31rem;"
+              src="TRASH.png"
+              class="trashxd"
+              (click)="removeOneProductFromBasket(product)"
+          
+            />
+          </div>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-template #emptyCart>
+      <p>Twój koszyk jest pusty.</p>
+    </ng-template>
+  </div>
+
+  <div class="right-column">
+    <div class="sticky-right" #rightCol>
+      <h5>Podsumowanie</h5>
+
+      <div>
+        Łącznie do zapłaty
+        {{ mathService.displayPrice(getFullPrice()) }} zł
+        <br>
+
+          <div  style="font-size:medium; font-weight: 700;" *ngIf="this.mathService.displayPriceNumber(getFullPrice()) < 79.99">
+          + dostawa
+          </div> 
+
+            <div  style="font-size:medium; color: #4EAD61; font-weight: 700;" *ngIf="this.mathService.displayPriceNumber(getFullPrice()) >= 79.99">
+          darmowa dostawa
+          </div> 
+      
+        </div>
+
+      <div class="delivery-continue">
+        <button
+          class="delivery"
+          routerLink="/dostawa-i-platnosc"
+          [disabled]="isButtonDisabled()"
+        >
+          Dostawa i płatność
+        </button>
+        <button class="continue" routerLink="/">Kontynuuj zakupy</button>
+      </div>
+    </div>
+
+
+
+
+    
+
+     <div class="normal-right" #rightCol>
+      
+      <div style="width: 100%">
+
+         <h5>Podsumowanie</h5>
+
+      <div>
+        Łącznie do zapłaty
+        {{ mathService.displayPrice(getFullPrice()) }} zł 
+
+        <div style="font-size:medium; font-weight: 700;" *ngIf="this.mathService.displayPriceNumber(getFullPrice()) < 79.99">
+         + dostawa
+        </div> 
+        
+        <div style="font-size:medium; color: #4EAD61; font-weight: 700;"  *ngIf="this.mathService.displayPriceNumber(getFullPrice()) >= 79.99">
+            darmowa dostawa
+        </div>
+
+      </div>
+
+
+
+      </div>
+     
+      <div class="delivery-continue">
+        <button
+          class="delivery"
+          routerLink="/dostawa-i-platnosc"
+          [disabled]="isButtonDisabled()"
+        >
+          Dostawa i płatność
+        </button>
+        <button class="continue" routerLink="/">Kontynuuj zakupy</button>
+      </div>
+    </div>
+
+
+
+
+
+
+  </div>
+</div>

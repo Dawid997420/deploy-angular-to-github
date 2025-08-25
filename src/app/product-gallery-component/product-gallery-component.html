@@ -1,0 +1,19 @@
+<div class="gallery-wrapper">
+  <button style="background: none; border: none; padding: 0; margin: 0; font: inherit; cursor: pointer; color: inherit;" (click)="prev()" [disabled]="currentIndex === 0">
+    
+                    <img src="left-arrow.png" style="width: 1rem;" /><!-- unicode strzałki w prawo -->
+</button>
+
+  <div class="gallery-track">
+    <img 
+      *ngFor="let image of visibleImages" 
+      [src]="image.url" 
+      (click)="selectImage(image.url)"
+      class="gallery-image"
+    />
+  </div>
+
+    <button style="background: none; border: none; padding: 0; margin: 0; font: inherit; cursor: pointer; color: inherit;" (click)="next()" [disabled]="currentIndex + maxVisible >= images.length">    
+                        <img src="right-arrow.png" style="width: 1rem;" /><!-- unicode strzałki w prawo -->
+    </button>
+</div>

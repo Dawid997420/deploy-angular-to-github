@@ -1,0 +1,393 @@
+.rejestracja {
+    background-color: black;
+    width: 100vw;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    padding: 1rem;
+
+    padding-left: 5rem;
+    padding-right: 5rem;
+    height: 3rem;
+
+    overflow-x: hidden;
+}
+
+
+.navbar  {
+    overflow-x: hidden;
+    overflow-y: hidden;
+
+}
+
+nav {
+    overflow: hidden;
+    overflow-y: hidden;
+
+}
+
+
+
+.navbar-style {
+     overflow: visible; /* dla bezpieczeństwa */
+  position: relative; /* jeśli nie masz */
+  position: relative;
+  z-index: 1000;
+  border-bottom: 1px solid #E7E7E7;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+.padder {
+    padding:0.7rem;
+}
+
+.iconic {
+    background-color: black;
+    color: black;
+}
+
+.praweIcony {
+
+    
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.ikona {
+    margin-left: 1rem;
+}
+
+.ikona:hover {
+
+        cursor: pointer;
+        transform: scale(1.2); /* Powiększamy element na hover */
+
+}
+
+.flaga {
+    cursor: pointer;
+    transition: transform 0.3s ease; /* Płynna animacja */
+}
+
+
+.flaga:hover {
+    transform: rotate(180deg); /* Obrót o 180 stopni */
+
+}
+
+.conteiner-toggler {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-wrap: nowrap;
+}
+
+/* Przyciemniony czarno-biały przycisk */
+.btn-black-white {
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+    transition: all 0.3s ease;
+    border-radius: 0;
+  }
+  
+  .btn-black-white:hover {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+  }
+  
+  /* Własne style dla inputa */
+  .custom-input {
+border-bottom: 1px solid #E7E7E7; /* czarna kreska */
+    border-right: none;
+    border-radius: 0;
+    box-shadow: none !important;
+  }
+  
+  .custom-input:focus {
+    outline: none;
+    box-shadow: none;
+    border-color: black;
+  }
+  
+  /* Usunięcie zaokrągleń przy łączeniu input i buttona */
+  .custom-search-group .form-control,
+  .custom-search-group .btn {
+    border-radius: 0;
+  }
+  .icon-kategorie {
+    height: 1.2rem;
+    width: auto;
+    object-fit: contain;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  
+  /* Dodatkowo zadbamy o środek przycisku */
+  .btn-kategorie {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* Odstęp między ikoną a tekstem */
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+    border-radius: 6px;
+    padding: 6px 20px;
+    min-width: 140px;
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+  
+  .btn-kategorie:hover {
+    background-color: #1DA1F2;
+    color: rgb(255, 255, 255);
+    border: 1px solid black;
+  }
+  
+  
+  /* Kontener na kategorię z hoverem */
+  .custom-kategorie {
+    position: relative;
+  }
+  
+  /* Pojawia się na hoverze rodzica */
+  .custom-kategorie:hover .dropdown-menu {
+    display: block;
+  }
+  
+ .custom-kategorie .dropdown-menu {
+  display: none; /* ukryty domyślnie */
+  position: absolute; /* absolutnie względem przycisku */
+  top: 100%; /* tuż pod przyciskiem */
+  left: 0;
+  z-index: 1050; /* większy niż navbar */
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 0.5rem 0;
+  min-width: 200px;
+  max-height: 400px; /* ograniczenie wysokości */
+  overflow-y: auto; /* scroll tylko w dropdownie */
+}
+
+  
+  /* Pozycje dropdown */
+  .custom-kategorie .dropdown-item {
+    color: black;
+    padding: 8px 16px;
+    transition: background-color 0.2s ease;
+    white-space: nowrap;
+  }
+  
+  .custom-kategorie .dropdown-item:hover {
+    background-color: #f1f1f1;
+  }
+  
+
+
+
+
+
+  .btn-promocje {
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+    border-radius: 6px;
+    padding: 6px 16px; /* mniejsze wcięcia */
+    min-width: auto;   /* nie wymuszaj dużej szerokości */
+    transition: all 0.3s ease;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+  }
+  
+  .btn-promocje:hover {
+    background-color: #1DA1F2;
+    color: white;
+    border: 1px solid black;
+  }
+  
+  .icon-promocje {
+    height: 1.1rem;
+    width: auto;
+    object-fit: contain;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .navbar-nav {
+    display: flex !important;
+    align-items: center;
+    gap: 0;
+      overflow: visible; /* dropdown może wychodzić poza navbar */
+
+
+  }
+  
+  .ms-custom-promocje {
+    margin-left: 0.4rem;
+  }
+
+
+  .wyszukiwarka-mobile {
+    display: none;
+  }
+
+    .wyszukiwarka-desktop{
+    display: block;
+  }
+  
+  .mobile-nav {
+    display: none;
+      position: relative; /* ← TO MUSI BYĆ */
+
+  }
+
+
+  .desktop-nav {
+    display: flex;
+  }
+
+@media ( max-width:1030px) {
+
+
+  .left-mob {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+   margin-left: 5vw; 
+   margin-top: 0.3rem;
+   margin-bottom: 0.3rem;
+   margin-right: 0rem;
+  
+    z-index: 1;
+  }
+
+  
+
+
+  .desktop-nav {
+    display: none;
+  }
+
+
+  .mobile-nav {
+      width: 100%;
+
+    display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative; /* ← TO MUSI BYĆ */
+
+  }
+
+
+.brand-mobile {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  }
+
+
+ 
+ 
+
+
+
+  .wyszukiwarka-mobilna{
+     display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  width: 60px; /* lub inna konkretna wartość */
+  height: 60px;
+  border-radius: 50%;
+  color: white;
+  }
+
+
+  .category {
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  width: 60px; /* lub inna konkretna wartość */
+  height: 60px;
+  border-radius: 50%;
+  color: white;
+    }
+
+
+
+
+
+    .right-mob {
+      display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+   margin-right: 5vw; 
+   margin-top: 0.3rem;
+   margin-bottom: 0.3rem;
+   margin-left: 0rem;
+  
+    z-index: 1;
+    }
+    
+
+
+}
+
+
+@media (max-width: 768px) {
+    /* Styl dla urządzeń o szerokości ekranu do 768px (np. telefony) */
+    .flaga {
+        width: 100%;  /* Przykład: obrazek ma zajmować 100% szerokości kontenera */
+        height: auto; /* Zatrzymanie proporcji wysokości */
+    }
+
+     .nav-1 {
+        width: 100%;
+        flex: 100%;
+
+    }
+
+    .nav-2 {
+        width: 100%;
+        flex: 100%;
+        position: relative;
+    } 
+}
+
+.pointer:hover {
+    cursor: pointer;
+}
+
+
+.basket-count {
+    position: absolute;
+    top: 6px;
+    right: 65px;
+    background-color: #007bff; /* niebieski */
+    background-color: #1DA1F2;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    box-shadow: 0 0 4px rgba(0,0,0,0.2);
+}
+
+
+

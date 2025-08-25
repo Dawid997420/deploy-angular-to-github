@@ -1,0 +1,118 @@
+<div class="prod-page">
+
+    <div class="header-items">
+       
+    
+        <div class="pagination-bar" style="display: flex; align-items: center; gap: 8px; padding: 10px; background-color: white;">
+            <div  *ngIf="currentPage==1 || currentPage<totalPages" style="width: 1.5rem;"> </div>
+            <img  *ngIf="currentPage!=1 || currentPage>totalPages" (click)="goToPageMinus()" class="arrow" src="arrow-left.svg">
+
+            <input 
+                    type="number" 
+                    id="pageInput" 
+                    name="page" 
+                    min="1" 
+                    [attr.max]="totalPages"
+                      [(ngModel)]="currentPage"
+                      (change)="goToPage()"
+                    value="1"
+                    style="width: 60px; padding: 6px; border: 1px solid #ccc; border-radius: 4px;"
+                />
+                <span>z {{totalPages}}</span>
+
+                <div *ngIf="currentPage==totalPages || currentPage>totalPages" style="width: 1.5rem;"> </div>
+                <img  *ngIf="currentPage!=totalPages || currentPage<totalPages" (click)="goToPagePlus()" class="arrow" src="action-right-arrow.svg">
+        </div>
+        
+    </div>
+
+   <div *ngFor="let product of products" class="product-card" (click)="choseProduct(product)" 
+   [routerLink]="['/product', nameConverter(product.name)  , product.id ]"
+  >
+
+    <div class="img-prod-container">
+    <img class="prodImg" [src]="product.images[0].url" loading="lazy"  />  
+    </div>
+
+    <div class="detail-prod-container">
+
+        <div class="top"> 
+
+            <h5 class="prod-name">{{ product.name }}</h5>
+                <div class="rating"> 
+                    <div id="rat-number"> 4.87 </div> 
+                    <img class="rat-star rat-star1" src="A-STAR.svg" />  
+                    <img class="rat-star rat-star1" src="A-STAR.svg" />  
+                    <img class="rat-star rat-star1" src="A-STAR.svg" />  
+                    <img class="rat-star rat-star1" src="A-STAR.svg" />  
+                    <img class="rat-star rat-star1" src="A-STAR.svg" />  
+                </div>
+                <p>{{ product.purchasedCount }} osób kupiło</p>
+
+
+                <div class="mobile-details">
+
+                        <p class="prod-price"><strong>{{ displayPrice(product.price)}} zł</strong></p>
+                        <div> {{ calculateNetto(product.price, 23)  }} zł netto</div>
+                        <div>{{ displayPrice( product.price + 1099)}}zł z dostawą </div>
+
+
+                           <div *ngIf="displayPriceNumber(product.price) >= 69.99" style="color: #1DA1F2; font-weight: 600;">Darmowa dostawa</div>
+                         <div *ngIf="displayPriceNumber(product.price) < 69.99" style="color: #1DA1F2; font-weight: 600;">Darmowa dostawa od 69,99</div>
+
+
+
+                         <div class="przyciski">
+                        <button class="do-koszyka" (click)="addToBasket(product); $event.stopPropagation()" >
+                                DODAJ DO KOSZYKA
+                            </button>
+
+
+                            <button class="icon-button">
+                        <img src="A-HEART.svg" alt="Serduszko" class="icon-image" />
+                        </button>
+                            </div>
+
+
+                </div>
+
+
+        </div>
+  
+    </div>
+
+    <div class="detail-prod-container-2"> 
+
+    <p class="prod-price"><strong>{{ displayPrice(product.price)}} zł</strong></p>
+    
+    <div> {{ calculateNetto(product.price, 23)  }} zł netto</div>
+    
+    <div>{{ displayPrice( product.price + 1099)}}zł z dostawą </div>
+
+    <div *ngIf="displayPriceNumber(product.price) >= 69.99" style="color: #1DA1F2; font-weight: 600;">Darmowa dostawa</div>
+    <div *ngIf="displayPriceNumber(product.price) < 69.99" style="color: #1DA1F2; font-weight: 600;">Darmowa dostawa od 69,99</div>
+
+
+    <div class="czas-dostawy">{{getDeliveryDayText(2)}} </div>
+
+    <div class="przyciski">
+   <button class="do-koszyka" (click)="addToBasket(product); $event.stopPropagation()" >
+        DODAJ DO KOSZYKA
+    </button>
+
+
+    <button class="icon-button">
+  <img src="A-HEART.svg" alt="Serduszko" class="icon-image" />
+</button>
+    </div>
+ 
+
+    </div>
+
+  </div>
+
+
+
+</div>
+
+

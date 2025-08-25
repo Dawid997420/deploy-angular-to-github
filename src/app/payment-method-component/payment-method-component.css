@@ -1,0 +1,44 @@
+
+.styled-checkbox {
+  width: 20px;
+  height: 20px;
+  accent-color: black; /* kolor zaznaczenia */
+  cursor: pointer;
+  
+}
+
+
+
+.checkboxy {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.pkt {
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+    font-size: 1rem;
+}
+
+.checkboxy label {
+    padding-left: 0.3rem;
+}
+
+.checkboxy label:hover {
+    cursor: pointer;
+    padding-left: 0.3rem;
+}
+
+.logo {
+
+    display: flex;
+    flex-wrap: nowrap;
+    margin-left: 0.5rem;
+    width: 5rem;
+}
+
+.logo img {
+    margin-left: 0.1rem;
+}

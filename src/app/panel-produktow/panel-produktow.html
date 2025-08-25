@@ -1,0 +1,87 @@
+
+<div class="first-header">
+
+            <h3> Lista produktów</h3>
+
+            <button routerLink="/sprzedawca/dodaj-produkt" class="dodaj-produkt"> Dodaj nowy produkt </button>
+
+        </div>
+
+<div class="panel-produktow">
+
+
+        <div class="p1">
+                 <h4>Filtrowanie produktów sklepu </h4>
+        </div>
+
+       <div class="p2">
+
+            <div class="r-1">
+                <input class="nazwa-prod">
+                <input class="opis-prod">
+                <input class="kategoria-prod">
+            </div>
+
+            <div class="r-2">
+                <div class="d-2">
+                    <input class="cena-od">
+                    <input class="cena-do">
+                </div>
+                <input>
+                <input>
+            </div>
+
+        </div>
+
+        <div class="p-3">
+
+            <button class="filtruj">Filtruj</button>
+
+            <button class="resetuj">Resetuj</button>
+
+
+        </div>
+
+        <div class="p-4">
+
+            <table class="produkty-tabela">
+           <thead>
+            <tr>
+                <th>id</th>
+                <th>Produkt</th>
+                <th>Kategoria</th>
+                <th>Szt.</th>
+                <th>Cena</th>
+                <th>Sprzedano</th>
+                <th>Ulub.</th>
+                <th>Status</th>
+                <th>Usuń</th> <!-- nowa kolumna -->
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr *ngFor="let produkt of products">
+                <td>{{ produkt.id }}</td>
+                <td class="product-img-name">
+                <img class="table-img" [src]="produkt.images[0].url">
+                {{ produkt.name }}
+                </td>
+                <td>{{ produkt.externalCategories }}</td>
+                <td>{{ produkt.stock }}</td>
+                <td>{{ mathService.displayPrice(produkt.price) + ' PLN' }}</td>
+                <td>?</td>
+                <td>?</td>
+                <td>{{ produkt.status }}</td>
+                <td>
+                <button (click)="usunProdukt(produkt.id || 1 )" class="delete-btn">
+                    🗑️
+                </button>
+                </td>
+            </tr>
+            </tbody>
+            </table>
+
+        </div>
+
+
+    </div>

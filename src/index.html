@@ -6,6 +6,87 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+
+
+  <link rel="stylesheet" href="https://unpkg.com/primeicons@5.0.0/primeicons.css">
+
+  
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QDZ7059BMY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-QDZ7059BMY');
+</script>
+
+  <script src="https://mapa.apaczka.pl/client/apaczka.map.js"></script>
+  <!-- 0zgmovpbf5ghvtplmhbrsmnwnb1t0mia -->
+
+
+
+<!-- 
+  <link rel="stylesheet" href="https://geowidget.inpost.pl/inpost-geowidget.css"/>
+<script src='https://geowidget.inpost.pl/inpost-geowidget.js' defer></script>
+<script> 
+  function afterPointSelected(point) { alert('Selected point: ' + point.name); } 
+</script> -->
+ <script type="application/javascript">
+
+        var apaczkaMap = new ApaczkaMap({
+        app_id : '2136089_eYG0pq9RgeRaCtQdn3FhuDLL',
+        onChange : function(record) {
+        if (record) {
+            window.selectedPaczkomat = record; // <- ZAPISUJEMY W WINDOW
+            console.log(record)
+
+            localStorage.setItem('selectedPaczkomat', JSON.stringify(record));
+
+               if (typeof window.onPaczkomatSelected === 'function') {
+              window.onPaczkomatSelected(record);
+             }
+
+        }
+        }
+        });
+        apaczkaMap.setFilterSupplierAllowed(
+    [ 'INPOST']
+);
+
+
+
+var pocztaPolska = new ApaczkaMap({
+        app_id : '2136089_eYG0pq9RgeRaCtQdn3FhuDLL',
+        onChange : function(record) {
+        if (record) {
+            window.selectedPoczta = record; // <- ZAPISUJEMY W WINDOW
+                            console.log(record)
+
+            localStorage.setItem('selectedPoczta', JSON.stringify(record));
+
+               if (typeof window.onPocztaSelected === 'function') {
+                
+               window.onPocztaSelected(record);
+                console.log(record)
+              }
+
+        }
+        }
+        });
+        pocztaPolska.setFilterSupplierAllowed(
+    [ 'POCZTA']
+);
+
+
+
+
+
+
+
+    </script>
+
 </head>
 <body>
   <app-root></app-root>

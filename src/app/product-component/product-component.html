@@ -1,0 +1,257 @@
+
+
+<div class="product"> 
+
+    <!-- <div class="przed"> Strona główna >  </div> -->
+
+
+    <div class="left-column"> 
+
+
+                
+            <div class="left-product">
+
+
+
+                <!-- <div class="left-info">
+                </div> -->
+                
+
+                <!-- <div class="image-wrapper">
+                <img class="product-image" [src]="chosenImage" alt="Product Image" />
+                </div> -->
+
+               <div class="main-image-wrapper">
+                <button class="arrow left-arrow" (click)="prev()">
+                    <img src="left-arrow.png" style="width: 1rem;" /><!-- unicode strzałki w prawo -->
+
+                </button>
+
+                <img
+
+                  (touchstart)="onTouchStart($event)"
+  (touchend)="onTouchEnd($event)"
+                    [src]="chosenImage"
+                    [class.slide-left]="slideDirection === -1"
+                    [class.slide-right]="slideDirection === 1"
+                    class="main-image"
+                    (load)="onImageLoad()"/>
+
+                    
+
+
+
+                <button class="arrow right-arrow" (click)="next()">
+                    <img src="right-arrow.png" style="width: 1rem;" /><!-- unicode strzałki w prawo -->
+                </button>
+                </div> 
+
+                <div class="dots-container">
+                    <span 
+                        *ngFor="let img of product.images; let i = index" 
+                        class="dot" 
+                        [class.active]="i === currentIndex">
+                    </span>
+                    </div>
+
+
+
+            </div>
+
+              <div class="gallery">
+
+                <app-product-gallery-component
+                [images]="product.images"
+                  (imageSelected)="choseImage($event)"
+  (directionSelected)="slideDirection = $event">
+                    </app-product-gallery-component>
+        
+              </div>
+
+
+                <div class="buy-div">
+
+                           
+            <div class="miniOpis">
+                <h2> {{product.name}} </h2>
+                <div style="display: flex; justify-content: flex-start;"> <div style="color: #7A7A7A; margin-right: 0.2rem;">Stan: </div>    Nowy</div> 
+
+                <div class="opinie">
+                    <div style="color: black;"> 5,0 </div>
+                    <div *ngFor="let _ of [1, 2, 3, 4, 5]">
+                        <img class="star" src="A-STAR.svg">
+                    </div>
+
+                </div>
+                <hr  style="width: 100%;overflow-x: hidden; margin-left: -1rem; border: none; border-top: 1px solid rgb(115, 115, 115);">
+
+
+               <h2 *ngIf="!product.promotion"> 
+  {{ displayPrice(product.price) }} zł
+</h2>
+
+<h2 *ngIf="product.promotion" style="color: #107B1E; position: relative; font-weight: 700;">
+
+  <span style="
+    position: absolute;
+    top: -1.5rem;
+    left: 0;
+    background-color: black;
+    color: white;
+    padding: 0.1rem 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    border-radius: 4px;
+    user-select: none;
+  ">
+    PROMOCJA
+  </span>
+
+  <div style="text-decoration: line-through; color: #6e6e6e; font-weight: 400; font-size: 1.2rem; margin-bottom: 0.2rem;">
+    {{ displayPrice(product.price) }} zł
+  </div>
+
+  {{ displayPrice(product.promotionalPrice || 1000) }} zł
+</h2>
+
+
+                <hr  style="width: 100%;margin-left: -1rem; overflow-x: hidden; border: none; border-top: 1px solid rgb(115, 115, 115);">
+
+                
+                <br>
+                Liczba sztuk
+
+                <div class="counter">
+                    <button (click)="decrementQuantity()">-</button>
+                    <span>{{ quantity }}</span>
+                    <button (click)="incrementQuantity()">+</button>
+                <div style="padding: 1rem ;">   <h5>z {{product.stock }}  sztuk </h5>  </div>  
+
+                </div>
+
+
+                <button (click)="basketService.addBuyNowProduct(product)" routerLink="/dostawa-i-platnosc" id="kup-teraz" class="buttony">KUP TERAZ</button>
+                <button (click)="basketService.addToBasket(product)" id="dodaj-do-koszyka" class="buttony" >DODAJ DO KOSZYKA</button>
+
+            </div>
+
+
+                </div>
+
+
+
+            <div class="podobne-oferty">
+                <h2>Podobne oferty</h2>
+                <!-- <app-similar-products [category]="product.externalCategories[0].breadcrumb[0].name"></app-similar-products> -->
+           
+            </div>
+
+
+
+
+            <div class="description">
+
+            <h3>Opis</h3>   
+
+
+                <div *ngFor="let section of product.description.sections" class="wiersz">
+
+                        <div *ngFor="let item of section.items" class="item"   [ngClass]="section.items.length === 1 ? 'single-item' : 'multiple-items'">
+                            <!-- Tutaj masz dostęp do item -->
+                            <p *ngIf="item.type=='IMAGE'"  class="img-desc">
+                            <img [src]="item.url" >
+                            </p>
+
+                            <div style="font-size: 12px;" *ngIf="item.type=='TEXT'" class="description-inner"
+                            [innerHTML]="item.content" >
+                            </div>
+
+                        </div>
+                </div>
+
+
+
+
+            </div>
+
+
+
+
+    </div>
+
+
+
+
+    <div class="right-column">
+
+
+                
+            <div class="miniOpis">
+                <h2> {{product.name}} </h2>
+                <div style="display: flex; justify-content: flex-start;"> <div style="color: #7A7A7A; margin-right: 0.2rem;">Stan: </div>    Nowy</div> 
+
+                <div class="opinie">
+                    <div style="color: black;"> 5,0 </div>
+                    <div *ngFor="let _ of [1, 2, 3, 4, 5]">
+                        <img class="star" src="A-STAR.svg">
+                    </div>
+
+                </div>
+              <hr style="overflow-x: hidden; width: 100%; margin-left: -1rem; border: none; border-top: 1px solid rgb(115, 115, 115);">
+<h2 *ngIf="!product.promotion"> 
+  {{ displayPrice(product.price) }} zł
+</h2>
+
+<h2 *ngIf="product.promotion" style="color: #107B1E; position: relative; font-weight: 700;">
+
+  <span style="
+    position: absolute;
+    top: -1.5rem;
+    left: 0;
+    background-color: black;
+    color: white;
+    padding: 0.1rem 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    border-radius: 4px;
+    user-select: none;
+  ">
+    PROMOCJA
+  </span>
+
+  <div style="text-decoration: line-through; color: #6e6e6e; font-weight: 400; font-size: 1.2rem; margin-bottom: 0.2rem;">
+    {{ displayPrice(product.price) }} zł
+  </div>
+
+  {{ displayPrice(product.promotionalPrice || 1000) }} zł
+</h2>
+                <hr  style="width: 100%; overflow-x: hidden ; margin-left: -1rem; border: none; border-top: 1px solid rgb(115, 115, 115);">
+
+                
+                <br>
+                Liczba sztuk
+
+                <div class="counter">
+                    <button (click)="decrementQuantity()">-</button>
+                    <span>{{ quantity }}</span>
+                    <button (click)="incrementQuantity()">+</button>
+                <div style="padding: 1rem ;">   <h5>z {{product.stock }}  sztuk </h5>  </div>  
+
+                </div>
+
+
+                <button (click)="basketService.addBuyNowProduct(product)" routerLink="/dostawa-i-platnosc" id="kup-teraz" class="buttony">KUP TERAZ</button>
+                <button (click)="basketService.addToBasket(product)" id="dodaj-do-koszyka" class="buttony" >DODAJ DO KOSZYKA</button>
+
+            </div>
+
+    </div>
+
+ 
+
+    
+    
+  
+</div>
+
+

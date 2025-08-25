@@ -1,0 +1,527 @@
+
+
+.icon-kategorie {
+    height: 1.2rem;
+    width: auto;
+    object-fit: contain;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+.highlighted {
+  color: red;
+    background-color: #f1f1f1;
+}
+  /* Dodatkowo zadbamy o środek przycisku */
+  .btn-kategorie {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* Odstęp między ikoną a tekstem */
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+    border-radius: 6px;
+    padding: 6px 20px;
+    min-width: 140px;
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+  
+  .btn-kategorie:hover {
+    background-color: #1DA1F2;
+    color: rgb(255, 255, 255);
+    border: 1px solid black;
+  }
+  
+  
+  /* Kontener na kategorię z hoverem */
+  .custom-kategorie {
+    display: flex;
+    position: relative;
+    
+  }
+  
+  /* Pojawia się na hoverze rodzica */
+  .custom-kategorie:hover .dropdown-menu {
+    display: block;
+  }
+  
+  /* Styl dropdownu – przyklejony do przycisku */
+  .custom-kategorie .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%; /* przylega do dołu przycisku */
+    left: 0;
+    z-index: 1;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 0.5rem 0;
+    min-width: 200px;
+
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+  
+  /* Pozycje dropdown */
+  .custom-kategorie .dropdown-item {
+    color: black;
+    padding: 8px 16px;
+    transition: background-color 0.2s ease;
+    white-space: wrap;
+  }
+  
+  .custom-kategorie .dropdown-item:hover {
+    background-color: #f1f1f1;
+  }
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  /* Podstawowy dropdown */
+.custom-kategorie {
+    position: relative;
+  }
+  
+  .category-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 0.5rem 0;
+    min-width: 200px;
+  }
+  
+  .custom-kategorie:hover .category-menu {
+    display: block;
+  }
+  
+  .dropdown-submenu {
+  position: relative;
+}
+
+.submenu {
+  display: flex;
+
+  position: absolute;
+  top: 0;
+  left: 100%;
+  margin-left: 0.1rem;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 0rem 0;
+  min-width: 600px;
+  z-index: 999;
+
+  
+}
+
+
+
+
+
+.centrowisko{
+   margin-top: 10%;
+  margin-bottom: 10%;
+  height: 80%;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;      /* <-- to pozwala zawijać */
+  max-height: 400px;    /* ustal wysokość, przy której zacznie się zawijać */
+  width: auto;
+  align-content: flex-start; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.dropdown-submenu > .dropdown-item {
+  position: relative;
+  z-index: 40;
+}
+.dropdown-submenu:hover .submenu {
+  display: block;
+}
+  /* Styl przycisków */
+  .dropdown-item {
+    white-space: wrap;
+    padding: 8px 16px;
+    transition: background-color 0.2s ease;
+  }
+  
+  .dropdown-item:hover {
+    background-color: #f1f1f1;
+  }
+  
+
+
+  .fullwidth-dropdown .dropdown-menu.two-column {
+    display: flex;
+    flex-direction: row;
+    width: 500px;
+    padding: 0;
+    margin-top: 0.5rem;
+    background-color: white;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    overflow: hidden;
+    z-index: 10;
+  }
+  
+  .main-categories {
+    width: 50%;
+    border-right: 1px solid #eee;
+    background-color: #f9f9f9;
+  }
+  
+  .sub-categories {
+    width: 50%;
+    background-color: #fff;
+  }
+  
+  .dropdown-item {
+    padding: 10px 16px;
+    transition: background-color 0.2s;
+    cursor: pointer;
+  }
+  .drop-sub {
+    width: 100%;
+  }
+  .dropdown-item:hover,
+  .dropdown-item.active {
+   color: #1DA1F2;
+   background-color: red;;
+  }
+
+
+  .fullwidth-dropdown {
+    position: relative;
+  }
+  
+  .fullwidth-dropdown .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: flex;
+    width: 600px;
+    background: white;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    margin-top: 0; /* <<< Upewnij się, że nie ma marginesu! */
+    z-index: 1000;
+  }
+
+
+
+
+  .custom-kategorie-wrapper {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .fullwidth-dropdown .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: flex;
+    width: 600px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 0; /* <- USUWA PRZERWĘ */
+    z-index: 1000;
+  }
+  
+  .main-categories,
+  .sub-categories {
+    width: 50%;
+    padding: 0.75rem;
+  }
+  
+  .dropdown-item {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    white-space: wrap;
+    transition: background-color 0.2s ease;
+  }
+  
+
+  .dropdown-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* To musi być dokładnie przyklejone do przycisku */
+  .dropdown-container .dropdown-menu {
+    position: absolute;
+    top: 100%; /* bez marginesu! */
+    left: 0;
+    display: flex;
+    width: 600px;
+    background-color: white;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    margin-top: 0px !important;  /* <<< WAŻNE: ŻADNEJ PRZERWY! */
+    z-index: 9999;
+    padding: 0;
+  }
+
+
+  .dropdown-menu,
+.submenu {
+  height: 28.5rem;
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+ .category {
+  display: none;
+ }
+ @media ( max-width:1030px) {
+ 
+
+  
+  .category {
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  width: 60px; /* lub inna konkretna wartość */
+  height: 60px;
+  border-radius: 50%;
+  color: white;
+    }
+
+    .category:hover {
+      cursor: pointer;
+    }
+
+    .custom-kategorie {
+      display: none;
+    }
+
+
+
+
+
+.category-overlay {
+  position: fixed;
+  top: 5.3rem;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  padding-top: auto;
+  margin-top: 0rem;
+  z-index: 9999;
+    overflow-y: auto; /* ← WAŻNE */
+
+}
+
+/* .category-content {
+  max-width: 100%;
+  background-color: black;
+  padding: 0rem;
+  border-radius: 0px;
+  width: 100%;
+    z-index: 9999;
+
+    height: 100%;
+      display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+} */
+
+.close-button {
+  position: absolute;
+  top: 0rem;
+  right: 2rem;
+  background: none;
+  color: white;
+  font-size: 2rem;
+  border: none;
+  cursor: pointer;
+}
+
+.category-content ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+
+
+
+.mob-sub-cat{
+
+      display: flex;
+    justify-content: flex-start; /* jeśli chcesz tekst do lewej */
+    align-items: center;         /* wyśrodkowanie pionowe */
+    height: 1rem;
+    padding: 1.1rem 0 1.1rem 1.5rem; /* zachowaj padding */
+    margin-bottom: 0.1rem;
+    background-color: #FFFFFF;
+    color: black;
+    /* border: 1px solid black;  */
+    /* border powinien mieć styl i kolor */
+}
+
+.mob-sub-cat:hover{
+
+  
+      display: flex;
+    justify-content: flex-start; /* jeśli chcesz tekst do lewej */
+    align-items: center;         /* wyśrodkowanie pionowe */
+    height: 1rem;
+    padding: 1.1rem 0 1.1rem 1.5rem; /* zachowaj padding */
+    margin: 0.1rem;
+    /* background-color: #1DA1F2;
+    border: 1px solid black;  */
+    cursor: pointer;
+  }
+
+
+
+  
+
+
+  .category-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Upewnij się, że wysokość jest pełna */
+  max-width: 100%;
+  background-color: #F4F4F4;
+  padding: 0rem;
+  border-radius: 0px;
+  width: 100%;
+    z-index: 9999;
+
+    height: 100%;
+      display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+}
+
+
+.mob-cat-list {
+   flex: 1;
+  overflow-y: auto;
+}
+
+.chosenCategoryMobile {
+   position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 3rem;
+  width: 100%;
+  background-color: #ffffff;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  padding: 2.3rem;
+  padding-right: 1.3rem;
+  padding-left: 1.3rem;
+ 
+}
+
+.btn-kategorie {
+ background-color: #1DA1F2;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  width: 100%;
+  height: 3rem; /* <- dodaj konkretną wysokość */
+  text-align: center;
+
+  display: flex; /* ← kluczowe */
+  align-items: center; /* ← wyrównanie pionowe */
+  justify-content: center; /* ← wyrównanie poziome */
+
+  transition: background-color 0.3s ease;
+}
+
+/* 
+.chosenCategoryMobile {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: auto;
+      position: absolute;
+  margin-bottom: auto;
+  height: 3rem;
+  width: 100%;
+  background-color: #222;
+  color: white;
+  } */
+
+
+
+
+  .close-icon {
+  position: fixed;
+  top: 0.2rem;
+  right: 1rem;
+  font-size: 2rem;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 100000;
+  transition: background-color 0.3s ease;
+}
+
+.close-icon:hover {
+}
+
+.close-icon img {
+  width: 2rem;
+}
+
+
+}

@@ -1,0 +1,112 @@
+
+<div class="page">
+
+    <div class="col-left">
+
+
+
+        <h2 class="cat-name"  *ngIf="selectedSubcategory.length<1">{{  capitalizeFirstLetter (categoryName) }}</h2>
+        <h2 class="cat-name" *ngIf="selectedSubcategory.length>1">{{  capitalizeFirstLetter (selectedSubcategory) }}</h2>
+
+
+            <div class="sciezka"> <a  routerLink="/" class="non" >HoffmanShop</a>  > 
+                
+               <a class="non" [routerLink]="['/category/' + slugify(categoryName)] "> {{ capitalizeFirstLetter( categoryName)}} </a>  > 
+              
+               <a class="non" (click)="selectSubCategory(slugify(subName))" [routerLink]="['/category/' + slugify(categoryName)] + '/' + slugify(subName)">  {{ capitalizeFirstLetter(subName)}} </a>
+               </div>
+
+
+            <div class="podkategorie"> 
+
+                <div style="font-weight: bold;">Podkategorie</div> 
+
+                <div class="wracac"> wróć do 
+                    
+                    <a *ngIf="selectedSubcategory.length<1" class="strona-g" [routerLink]="'/'">Strony głównej</a>
+                
+                    <a *ngIf="selectedSubcategory.length>1" class="strona-g" [routerLink]="['/category/'] + categoryName" >{{categoryName}}</a>
+
+
+                </div> 
+                
+
+
+                <ul class="subcategory-list">
+                <li class="subcategory-li"   *ngFor="let sub of subcategories"   [routerLink]="['/category/' + categoryName, slugify( sub)]"
+                  (click)="selectedSubcategory = sub"  [class.active]="slugify(selectedSubcategory) == slugify(sub)">
+                  {{ sub }} 
+                </li>
+
+                </ul>
+
+
+                <div style="font-weight: bold; margin-top: 1rem;">Filtry</div> 
+                <div style="font-weight: bold; margin-top: 0.5rem; margin-bottom: 0.5rem;" class="wracac">cena </div> 
+
+                <div class="price-range">
+                    <label>
+                        <input type="text" [(ngModel)]="priceFrom" placeholder="np. 100" />
+                    </label>
+                    -
+                    <label>
+                        <input type="text" [(ngModel)]="priceTo" placeholder="np. 500" />
+                    </label>
+                
+                </div>
+
+
+                <div class="free-shipping" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+                <label>
+                    <input class="checkboxy" type="checkbox" [(ngModel)]="freeShipping" />
+                    Darmowa dostawa
+                </label>
+                </div>
+
+
+                <div style="font-weight: bold; margin-top: 1rem;">Termin dostawy</div> 
+                <label style="margin-top: 0.2rem; margin-bottom: 0.2rem;">
+                    <input class="checkboxy" type="checkbox" [(ngModel)]="DostawaJutro" />
+                    dostawa do jutra
+                </label>
+                <label style="margin-top: 0.2rem; margin-bottom: 0.2rem;">
+                    <input class="checkboxy" type="checkbox" [(ngModel)]="DostawaPojutrze" />
+                    dostawa najpóźniej pojutrze
+                </label>
+
+                <div style="font-weight: bold; margin-top: 1rem;">Faktura</div> 
+                <label style="margin-top: 0.2rem; margin-bottom: 0.2rem;">
+                    <input class="checkboxy" type="checkbox" [(ngModel)]="Faktura" />
+                    Faktura VAT
+                </label>
+
+                <div style="font-weight: bold; margin-top: 1rem;">Oferty promocyjne</div> 
+                <label style="margin-top: 0.2rem; margin-bottom: 0.2rem;">
+                    <input class="checkboxy" type="checkbox" [(ngModel)]="Promocje" />
+                    SUPER PROMOCJE
+                </label>
+
+                <label style="margin-top: 0.2rem; margin-bottom: 0.2rem;">
+                    <input class="checkboxy" type="checkbox" [(ngModel)]="NajnizszaCena" />
+                    GWARANCJA NAJNIŻSZEJ CENY
+                </label>
+            </div>
+
+
+
+
+    </div>
+
+    
+    <div class="col-right"> 
+
+
+            <app-product-page-component></app-product-page-component>
+
+    </div>
+
+
+
+
+
+</div>

@@ -1,0 +1,664 @@
+body {
+  overflow-x: hidden;
+}
+
+.przed {
+  flex: 100%;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.left-product {
+    background-color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; 
+    width: 100%;   
+   
+    margin-right: 1rem;
+    padding-bottom: 1rem;
+    height: 100vh;
+}
+
+
+
+.podobne-oferty{
+    background-color: white;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column; 
+    width: 100%;   
+   
+    margin-right: 1rem;
+    padding: 1rem;
+    margin-top: 1rem;
+    height: auto;
+}
+
+
+
+
+.image-wrapper {
+  padding-top: 1.05rem;
+  width: 100%;
+  max-width: 600px; /* Możesz dopasować */
+  height: 400px;     /* Stała wysokość dla spójności */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+ 
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* 👈 KLUCZOWE */
+}
+
+.miniOpis {
+    background-color: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+   
+    width: 100%;
+}
+
+.left-info {
+    
+    padding: 1rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.counter {
+    display: flex;
+    align-items: center;
+    gap: 0px; /* Odstęp między elementami */
+    font-family: Arial, sans-serif; /* Prosty font */
+  }
+  
+  .counter button {
+    width: 50px;
+    height: 40px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    background-color: #ffffff; /* Jasnoszare tło */
+    border: 1px solid #ccc; /* Cienkie obramowanie */
+    border-radius: 2px; /* Delikatne zaokrąglenie */
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+  }
+  
+  .counter button:hover {
+
+    background-color: #ffffff; /* Ciemniejsze tło na hover */
+    border-color: #aaa; /* Ciemniejsze obramowanie na hover */
+  }
+  
+  .counter span {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    width: 60px; /* Ustalona szerokość */
+    height: 40px; /* Dopasowana wysokość */
+    text-align: center;
+    line-height: 40px; /* Wyśrodkowanie tekstu */
+    border: 1px solid #000000; /* Obramowanie wokół licznika */
+    border-radius: 1px; /* Delikatne zaokrąglenie */
+    background-color: #fff; /* Białe tło */
+  }
+  
+  .counter .available {
+    font-size: 14px;
+    color: #666;
+    margin-left: 1px; /* Odstęp od licznika */
+  }
+  
+
+
+  button {
+    width: 100%; /* Przycisk zajmuje całą szerokość rodzica */
+    height: 50px; /* Wysokość przycisku */
+    font-size: 18px; /* Rozmiar tekstu */
+    font-weight: 400; /* Pogrubiony tekst */
+    color: #fff; /* Biały kolor tekstu */
+
+    border: none; /* Usuń obramowanie */
+    border-radius: 1px; /* Zaokrąglone rogi */
+    cursor: pointer; /* Zmiana kursora na "kliknięcie" */
+    /* transition: background-color 0.3s ease, transform 0.2s ease; */
+  }
+  
+ 
+
+  #kup-teraz {
+    margin-bottom: 0.5rem;
+  }
+
+
+  .description {
+    width:100%;
+    height: auto;
+    background-color: white;
+    margin-top: 1rem;
+    padding: 2rem;
+}
+
+.description h2 {
+  font-size: 0.1rem;
+}
+
+
+.gallery {
+  background-color: white;
+  padding: 0.3rem;
+    margin-top: 0.3rem;
+    margin-bottom: 0.0rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+}
+
+.gal-1 {
+    margin: 0.3rem;
+    height: 8rem;
+}
+
+.gal-1:hover {
+    cursor: pointer;
+}
+
+.star {
+    margin-top: -0.3rem;
+    height: 1.4rem;
+}
+
+.opinie {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.wiersz {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.multiple-items {
+  width: 50%;
+}
+
+
+.single-item{
+  
+ width: 100%;
+}
+
+.img-desc{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.item {
+  padding-top: 2.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.item img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+.description-inner h1 {
+  color: red;
+}
+
+.description-inner h2 {
+  color: orange;
+}
+
+.description-inner p {
+  font-size: 1rem;
+}
+
+.description-inner h1 {
+  color: red !important;
+  font-size: 1.5rem;
+}
+
+
+
+
+.product {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 2rem;
+  background-color: #ECEFF1;
+   /* odstęp między kolumnami */
+   width: 100%;
+   gap: 1rem;
+}
+
+.left-column {
+  display: flex;
+  flex-direction: column;
+  flex: 65%; /* albo np. flex: 1 */
+  max-width: 65%;
+}
+
+.right-column {
+  background-color: blue;
+  display: flex;
+  flex-direction: column;
+  flex: 35%;
+  width: 35%;
+}
+
+
+.buttony {
+    
+  background-color: #000000;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.4rem;
+  cursor: pointer;
+
+  transition: background-color 0.3s ease;
+}
+
+
+.buy-div {
+  display: none;
+}
+
+
+.main-image-wrapper {
+  position: relative; /* żeby można było absolutnie pozycjonować strzałki */
+  margin-top: 1.1rem;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  /* background-color: rgba(0, 0, 0, 0.4); */
+  border: none;
+  color: white;
+  font-size: 2rem;
+  width: 3rem;
+  height: 3rem;
+  cursor: pointer;
+  /* border-radius: 50%; */
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+
+  /* Brak animacji na hover */
+  transition: none !important;
+  transform: translateY(-50%) !important;
+}
+
+/* Usunięty efekt hover przesuwający */
+.arrow:hover {
+  /* background-color: rgba(0, 0, 0, 0.6); */
+  /* bez scale, bez transform, bez przesunięć */
+}
+
+.left-arrow {
+  display: block;
+  left: 0.5rem;
+}
+
+.right-arrow {
+    display: block;
+
+  right: 0.5rem;
+}
+
+
+.main-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 1;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.slide-left {
+  animation: slideLeft 0.4s ease;
+}
+
+.slide-right {
+  animation: slideRight 0.4s ease;
+}
+
+
+/* JAKBY KTOS CHCIAŁ SIE W ANIMACJE BAWIĆ 
+/* @keyframes slideLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+} */
+
+
+
+
+
+
+
+@media (max-width: 1600px) { 
+.zdj1 {
+    height: auto;
+    padding:5.2rem;
+    padding-top: 0rem;
+    margin: auto;
+    width: 100%;
+}
+
+}
+
+
+
+@media (max-width: 1320px) { 
+
+
+  .left-column {
+    max-width: 65%;
+    flex: 65%;
+  }
+
+
+  .zdj1 {
+    width: 100%;
+  }
+
+  .right-column {
+        width: 35%;
+
+    flex: 35%;
+  }
+
+
+  .left-product {
+    background-color: white;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column; 
+    width: 100%;   
+   
+    margin-right: 1rem;
+    padding-bottom: 1rem;
+    height: auto;
+}
+
+}
+
+
+@media (max-width: 1100px) { 
+ 
+
+
+  
+  .left-column {
+    max-width: 60%;
+    flex: 60%;
+  }
+
+
+  .zdj1 {
+    width: 100%;
+     height: auto;
+    padding:2.0rem;
+    padding-top: 0rem;
+    margin: auto;
+  }
+
+  .right-column {
+        width: 40%;
+
+    flex: 40%;
+  }
+
+
+  .left-product {
+    background-color: white;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column; 
+    width: 100%;   
+   
+    margin-right: 1rem;
+    padding-bottom: 1rem;
+    height: auto;
+}
+
+
+.product {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: #ECEFF1;
+   /* odstęp między kolumnami */
+   width: 100%;
+   gap: 0.5rem;
+}
+
+
+
+
+}
+
+
+
+@media (max-width: 900px) { 
+
+
+  .left-column {
+    max-width: 55%;
+    flex: 55%;
+  }
+
+
+  .right-column {
+        width: 45%;
+
+    flex: 45%;
+  }
+
+
+  .zdj1 {
+    height: auto;
+    padding:1.2rem;
+    padding-top: 0rem;
+    margin: auto;
+    width: 100%;
+}
+
+}
+
+
+
+
+.dots-container {
+  display: none;
+  justify-content: center;
+  margin-top: 10px;
+  gap: 6px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ccc;
+  transition: background-color 0.3s;
+}
+
+.dot.active {
+  background-color: #333;
+}
+
+
+
+
+
+@media (max-width: 772px) { 
+ 
+  
+.dots-container {
+
+  display: flex;
+  justify-content: center;
+  margin-top: 13px;
+  gap: 6px;
+}
+  .product {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100vw;
+    margin: 0rem;
+    padding: 0rem;
+    padding-top: 0.6rem;
+  }
+
+
+  .zdj1 {
+    margin: 0rem;
+    padding: 4rem;
+  }
+
+  .left-column  {
+    margin: 0rem;
+    padding: 0rem;
+    width: 100vw;
+    flex: 100%;
+    max-width: 100%;
+  }
+  .right-column {
+    width: 0vw;
+  
+    display: none;
+    width: 0%;
+  }
+
+
+  .gallery {
+     display: none;
+  }
+
+  .buy-div {
+    margin-top: 0.6rem;
+    display: flex;
+  }
+
+
+  .img-desc {
+    width: 100%;
+    max-width: 100%;
+    flex: 100%;
+  }
+
+  .description-inner {
+    width: 100%;
+    max-width: 100%;
+    flex: 100%;
+  }
+
+  .item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-left: 0.1rem;
+    padding-right: 0.1rem;
+  }
+
+
+  .wiersz {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.multiple-items {
+  min-width: 100%;
+}
+
+
+
+.right-arrow {
+
+  display: none;
+}
+
+.left-arrow {
+
+  display: none;
+}
+
+
+
+}
+
+
+

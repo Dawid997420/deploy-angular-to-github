@@ -1,1 +1,49 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family:BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #F4F4F4;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* ⛔️ najważniejsze – blokuje poziome scrollowanie strony */
+  box-sizing: border-box;
+}
+
+.description-inner h2,
+.description-inner h3 {
+  font-weight: 700;
+  font-size: 1rem !important;
+  line-height: 1.2;
+}
+
+.description-inner h1 {
+font-size: 1.5rem;
+  font-weight: 700;
+
+} 
+
+.description-inner p,
+.description-inner li{
+font-size: 1rem;
+
+} 
+
+
+
+@media (max-width: 772px) { 
+
+}

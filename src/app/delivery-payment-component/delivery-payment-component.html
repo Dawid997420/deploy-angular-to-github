@@ -1,0 +1,716 @@
+
+<div class="basket"  #basketWrapper>
+
+    <div class="left-column">
+
+    <h5 style="font-weight: 800; text-transform: uppercase;">Dostawa i płatność</h5>
+
+
+    <form class="delivery-form" #formRef="ngForm" id="dane">
+    
+        <h5>Dane odbiorcy</h5>
+
+  <div class="form-row">
+    <div class="form-group">
+      <input type="text" id="firstName" name="firstName" (input)="saveFormDataToStorage()" [(ngModel)]="formData.firstName" placeholder="Imię" 
+       #firstName="ngModel"
+  [class.invalid-input]="firstName.invalid && firstName.touched"
+ required>
+
+    <div *ngIf="firstName.invalid && firstName.touched" class="error-message">
+    Pole jest wymagane.
+    </div>
+
+    </div>
+
+    <div class="form-group">
+      <input type="text" id="lastName" name="lastName" (input)="saveFormDataToStorage()" [(ngModel)]="formData.lastName"
+             #lastName="ngModel"   [class.invalid-input]="lastName.invalid && lastName.touched"
+  placeholder="Nazwisko" required>
+    <div *ngIf="lastName.invalid && lastName.touched" class="error-message">
+    Pole jest wymagane.
+    </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <!-- <label for="street">Ulica</label> -->
+    <input type="text" id="street" name="street" (input)="saveFormDataToStorage()"   #street="ngModel" [(ngModel)]="formData.street" placeholder="Ulica"
+    [class.invalid-input]="street.invalid && street.touched"
+    required>
+     <div *ngIf="street.invalid && street.touched" class="error-message">
+    Pole jest wymagane.
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <input type="text" id="houseNumber" name="houseNumber" (input)="saveFormDataToStorage()" [(ngModel)]="formData.houseNumber"  placeholder="Numer budynku"
+       #houseNumber="ngModel"  [class.invalid-input]="houseNumber.invalid && houseNumber.touched" required>
+          <div *ngIf="houseNumber.invalid && houseNumber.touched" class="error-message">
+        Pole jest wymagane.
+    </div>
+    </div>
+
+    <div class="form-group">
+      <input type="text" id="apartment" name="apartment" (input)="saveFormDataToStorage()" [(ngModel)]="formData.apartment" placeholder="Numer mieszkania">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <input type="text" id="postalCode" name="postalCode"  #postalCode="ngModel" [(ngModel)]="formData.postalCode" placeholder="Kod pocztowy"
+       [class.invalid-input]="postalCode.invalid && postalCode.touched" required>
+
+          <div *ngIf="postalCode.invalid && postalCode.touched" class="error-message">
+        Pole jest wymagane.
+         </div>
+    </div>
+
+    <div class="form-group">
+      <input type="text" id="city" (input)="saveFormDataToStorage()" name="city" #city="ngModel"
+       [class.invalid-input]="city.invalid && city.touched" [(ngModel)]="formData.city" placeholder="Miasto" required>
+    
+         <div *ngIf="city.invalid && city.touched" class="error-message">
+        Pole jest wymagane.
+         </div>
+        
+    </div>
+  </div>
+
+  <div class="form-row">
+        <div class="form-group">
+
+    <input   pattern="^[0-9]{9}$" (input)="saveFormDataToStorage()"  type="tel" id="phone" name="phone" #phone="ngModel"   [class.invalid-input]="phone.invalid && phone.touched" [(ngModel)]="formData.phone" required placeholder="Telefon komórkowy">
+        
+    <div *ngIf="phone.invalid && phone.touched" class="error-message">
+        <div *ngIf="phone.value.length<1">Pole jest wymagane.</div>
+        <div *ngIf="phone.value.length>=1">Numer telefonu jest niepoprawny</div>
+    </div>
+
+
+</div>
+
+    <div class="form-group">
+  <input type="email" id="email" name="email" #email="ngModel"  (input)="saveFormDataToStorage()" 
+         [class.invalid-input]="!isValidEmail(email.value) && email.touched"  
+         [(ngModel)]="formData.email" required placeholder="Adres e-mail">
+
+    <div *ngIf="!isValidEmail(email.value) && email.touched" class="error-message">
+        <div *ngIf="email.value.length<1">Pole jest wymagane.</div>
+        <div *ngIf="email.value.length>=1">Email jest niepoprawny</div>
+
+    </div>
+</div>
+  </div>
+ 
+
+  <div class="checkboxy"  style="display: none;">
+    <input type="checkbox" id="select-all" class="styled-checkbox" [checked]="wantInvoice" (change)="wantInvoice = !wantInvoice">
+   <label for="select-all" class="hover"> Chcę otrzymać fakturę VAT</label> 
+  </div>
+  
+  <div *ngIf="wantInvoice"  class="checkbox-invoice">
+    
+   <div class="checkboxy">
+  <input type="radio" id="company" name="invoice" class="styled-checkbox-circle" [(ngModel)]="invoiceType" value="company" />
+  <label for="company" class="hover">firma</label>
+</div>
+
+<div class="checkboxy">
+  <input type="radio" id="private" name="invoice" class="styled-checkbox-circle" [(ngModel)]="invoiceType" value="private" />
+  <label for="private" class="hover" >osoba prywatna</label>
+</div>
+    
+  </div>
+
+
+     <div *ngIf="wantInvoice && invoiceType=='company'" class="firma form-group">
+     
+        <input type="text" id="nip" name="nip"  #nip="ngModel"  placeholder="NIP"  [(ngModel)]="formData.invoice.nip" 
+      [class.invalid-input]="nip.invalid && nip.touched" required>
+          <div *ngIf="nip.invalid && nip.touched" class="error-message">
+        Pole jest wymagane.
+         </div>
+      <input type="text" id="company-name" name="company-name"  #companyName="ngModel" [class.invalid-input]="companyName.invalid && companyName.touched" [(ngModel)]="formData.invoice.companyName"  placeholder="Nazwa Firmy" required>
+      <div *ngIf="companyName.invalid && companyName.touched" class="error-message">
+        Pole jest wymagane.
+         </div>
+      <input type="text" id="company-ulica" name="company-ulica" #companyStreet="ngModel" 
+      [class.invalid-input]="companyStreet.invalid && companyStreet.touched"  [(ngModel)]="formData.invoice.companyStreet" placeholder="Ulica" required>
+      <div *ngIf="companyStreet.invalid && companyStreet.touched" class="error-message">
+        Pole jest wymagane.
+         </div>
+        <div class="form-row">
+        <div class="form-group">
+        <input type="text" id="company-houseNumber" name="company-houseNumber" #companyHouseNumber="ngModel" [(ngModel)]="formData.invoice.companyHouseNumber"  placeholder="Numer budynku"
+        [class.invalid-input]="companyHouseNumber.invalid && companyHouseNumber.touched" required>
+
+        <div *ngIf="companyHouseNumber.invalid && companyHouseNumber.touched" class="error-message">
+        Pole jest wymagane.
+         </div>
+
+        </div>
+
+        <div class="form-group">
+        <input type="text" id="company-apartment" name="company-apartment" 
+        [(ngModel)]="formData.invoice.companyApartment" placeholder="Numer mieszkania">
+        </div>
+        </div>
+
+
+
+          <div class="form-row">
+        <div class="form-group">
+        <input type="text" id="company-postalCode" name="company-postalCode"   #companyPostalCode="ngModel" [(ngModel)]="formData.invoice.companyPostalCode" 
+          [class.invalid-input]="companyPostalCode.invalid && companyPostalCode.touched" placeholder="Kod pocztowy" required>
+      
+             <div *ngIf="companyPostalCode.invalid && companyPostalCode.touched" class="error-message">
+        Pole jest wymagane.
+         </div>
+
+        </div>
+
+        <div class="form-group">
+        <input type="text" id="company-city" name="company-city"  #companyCity="ngModel"  (input)="saveFormDataToStorage()"
+         [class.invalid-input]="companyCity.invalid && companyCity.touched"  [(ngModel)]="formData.invoice.companyCity" placeholder="Miejscowość" required>
+        
+            <div *ngIf="companyCity.invalid && companyCity.touched" class="error-message">
+        Pole jest wymagane.
+         </div>
+
+        </div>
+        </div>
+
+    </div>
+
+
+      <div *ngIf="wantInvoice && invoiceType=='private'" class="firma form-group">
+  
+        <div class="form-row">
+        <div class="form-group">
+        <input type="text" id="firstName" name="firstName" #privateFirstName="ngModel"  (input)="saveFormDataToStorage()"
+         [class.invalid-input]="privateFirstName.invalid && privateFirstName.touched"    [(ngModel)]="formData.invoice.privateFirstName"  placeholder="Imię" required>
+       
+        
+        <div *ngIf="privateFirstName.invalid && privateFirstName.touched" class="error-message">
+        Pole jest wymagane.
+         </div>
+
+
+        </div>
+
+        
+
+        <div class="form-group">
+        <input type="text" id="lastName" name="lastName" #privateLastName="ngModel" 
+        [class.invalid-input]="privateLastName.invalid && privateLastName.touched"  [(ngModel)]="formData.invoice.privateLastName" placeholder="Nazwisko" required>
+            <div *ngIf="privateLastName.invalid && privateLastName.touched" class="error-message">
+        Pole jest wymagane.
+         </div>
+    
+        </div>
+    </div>     
+  
+      <input type="text" id="company-ulica" name="company-ulica" #privateStreet="ngModel" 
+             [class.invalid-input]="privateStreet.invalid && privateStreet.touched"  [(ngModel)]="formData.invoice.privateStreet"  placeholder="Ulica" required>
+
+                <div *ngIf="privateStreet.invalid && privateStreet.touched" class="error-message">
+        Pole jest wymagane.
+         </div>
+
+
+        <div class="form-row">
+        <div class="form-group">
+        <input type="text" id="company-houseNumber" name="company-houseNumber" #privatehouseNumber="ngModel" 
+         [class.invalid-input]="privatehouseNumber.invalid && privatehouseNumber.touched"   [(ngModel)]="formData.invoice.privateHouseNumber"  placeholder="Numer budynku" required>
+        
+                <div *ngIf="privatehouseNumber.invalid && privatehouseNumber.touched" class="error-message">
+        Pole jest wymagane.
+         </div>
+        
+        </div>
+
+        <div class="form-group">
+        <input type="text" id="company-apartment" name="company-apartment" [(ngModel)]="formData.invoice.privateApartment" placeholder="Numer mieszkania">
+        </div>
+        </div>
+
+
+
+          <div class="form-row">
+        <div class="form-group">
+        <input  #privatePostalCode="ngModel"  [class.invalid-input]="privatePostalCode.invalid && privatePostalCode.touched" type="text" id="company-postalCode" name="company-postalCode" [(ngModel)]="formData.invoice.privatePostalCode"  placeholder="Kod pocztowy" required>
+            
+           <div *ngIf="privatePostalCode.invalid && privatePostalCode.touched" class="error-message">
+        Pole jest wymagane.
+         </div>
+    
+        </div>
+
+        <div class="form-group">
+        <input #privateCity="ngModel" [class.invalid-input]="privateCity.invalid && privateCity.touched" type="text" id="company-city" name="company-city" placeholder="Miejscowość" [(ngModel)]="formData.invoice.privateCity" required>
+            <div *ngIf="privateCity.invalid && privateCity.touched">
+        Pole jest wymagane.
+
+            </div>    
+
+    
+        </div>
+        </div>
+
+    </div>
+
+</form>
+
+        
+     
+<div class="left-column-2" id="delivery">
+    <h5>Dostawa</h5>
+
+     <div class="list-to-buy">
+    <div *ngFor="let product of basketService.getGroupedBasketOnlyChecked()" class="product-item">
+      <div>
+        <img [src]="product.images[0].url" style="width: 5rem;">
+      </div>
+      <div class="product-details">
+        <div class="product-name"> {{ product.name }}</div> <br>
+        <div class="quantity">{{ product.quantity }} x 
+          {{ mathService.displayPrice(product.promotion ? product.promotionalPrice : product.price) }}  
+        </div>
+
+      </div>
+    
+
+      <div class="product-price">
+  {{ mathService.displayPrice(product.promotion ? (product.promotionalPrice) *product.quantity : (product.price * product.quantity))  }}
+
+
+            <!-- {{   mathService.displayPrice(product.price * product.quantity) }} zł -->
+      </div>
+    </div>
+  </div>
+
+
+ <h5 style="padding-top: 1rem;">Uwagi odnośnie zakupu</h5>
+
+    <div class="notes-wrapper">
+    <textarea
+        rows="4"
+        placeholder="Wiadomość dla sklepu ( opcjonalnie )">
+    </textarea>
+    </div>
+
+ <div id="wybierz-dostawe">
+    Wybierz sposób dostawy
+ </div>
+
+ <div id="delivery-popup" class="popup">
+  Metoda dostawy nie została wybrana
+</div>
+
+ <div id="form-popup" class="popup">
+  Formularz dostawy zawiera błędy
+</div>
+
+<div id="paczkomat-popup" class="popup">
+  Nie wybrano paczkomatu!
+</div>
+
+
+<div id="payment-popup" class="popup">
+  Metoda płatności nie została wybrana
+</div>
+
+
+
+ <h5 style="padding-top: 1rem; padding-bottom: 0rem; margin-bottom: 0rem;">Odbiór w punkcie</h5>
+  
+ <div class="odbior-w-punkcie checkboxy">
+
+   
+          
+     
+     
+
+
+        
+ <div class="punkty checkboxy pkt">
+    <input type="checkbox" id="orlen-paczka" class="styled-checkbox" [(ngModel)]="inpostPaczka"(change)="onPaczkomatSelected()" > 
+        <label class="punkt-checkbox" class="hover" for="orlen-paczka" 
+
+        >Paczkomaty Inpost 24/7
+                          <div style="font-size: 0.7rem; font-weight: 700; color: #4EAD61;" *ngIf="calculatedBasketPriceNumber() >= 79.99" >
+                              darmowa dostawa
+                          </div>
+      </label>
+
+                    <div *ngIf="calculatedBasketPriceNumber() < 79.99" 
+     style="margin-left: auto; font-weight: 800;">
+  11.99 zł
+</div>
+
+        <!-- Gdy cena >= 79.99 -->
+        <div *ngIf="calculatedBasketPriceNumber() >= 79.99" 
+            style="margin-left: auto; font-weight: 800;  text-align: right;">
+          <div style="text-decoration: line-through; font-size: 0.8em; color: #888;">
+            11.99 zł
+          </div>
+          <div style="font-size: 1em; color: #000;">
+            0.00 zł
+          </div>
+        </div>
+
+</div>
+
+ <div  
+ *ngIf="deliveryMethod =='PACZKOMAT' && selectedPaczkomat != null " class="selected-pkt">
+    <!-- <p><strong>Wybrany punkt:</strong></p> -->
+    <div class="col-left">
+            <img style="width: 5rem;" src="INPOST.png">
+    </div>
+
+    <div class="col-right"> 
+        <div> <strong> Paczkomat InPost {{ selectedPaczkomat.foreign_access_point_id }}</strong> </div>
+            <div>{{ selectedPaczkomat.street }} {{ selectedPaczkomat.house_number }}
+            </div>
+            <div>
+                {{ selectedPaczkomat.city }}
+                {{ selectedPaczkomat.postal_code}}
+            </div>
+            <div class="grey">
+                InPost Paczkomat 24/7
+            </div>
+    </div>
+
+     <div class="wybierz-inny" (click)="choseOtherPaczkomat()">
+        Wybierz inny punkt
+    </div>
+   
+ </div>
+
+
+
+      
+    <div class="punkty checkboxy pkt">
+    <input type="checkbox" [(ngModel)]="pocztaPolska" (change)="onPocztaPolskaSelected()" id="dpd-pickup" class="styled-checkbox" > 
+        <label class="punkt-checkbox" class="hover" for="dpd-pickup" 
+                  
+        >Poczta Polska
+      
+         <div style="font-size: 0.7rem; font-weight: 700; color: #4EAD61;" *ngIf="calculatedBasketPriceNumber() >= 79.99" >
+             darmowa dostawa
+         </div>
+      </label>
+
+
+
+                    <div *ngIf="calculatedBasketPriceNumber() < 79.99" 
+     style="margin-left: auto; font-weight: 800;">
+  10.99 zł
+</div>
+
+        <!-- Gdy cena >= 79.99 -->
+        <div *ngIf="calculatedBasketPriceNumber() >= 79.99" 
+            style="margin-left: auto; font-weight: 800;  text-align: right;">
+          <div style="text-decoration: line-through; font-size: 0.8em; color: #888;">
+            10.99 zł
+          </div>
+          <div style="font-size: 1em; color: #000;">
+            0.00 zł
+          </div>
+        </div>
+
+    </div>
+
+
+
+    <div  
+ *ngIf="deliveryMethod =='POCZTA_POLSKA' && selectedPointPoczta !=null"  class="selected-pkt">
+
+            <div class="col-left">
+            <img style="width: 5rem;" src="pp-logo.jpg">
+            </div>
+
+            <div class="col-right"> 
+
+                
+                <div> <strong> Punkt Poczty Polskiej {{ selectedPointPoczta.foreign_access_point_id }}</strong> </div>
+                    <div>{{ selectedPointPoczta.street  }} {{ selectedPointPoczta.house_number }}
+                    </div>
+                    <div>
+                        {{ selectedPointPoczta.city }}
+                        {{ selectedPointPoczta.postal_code }}
+                    </div>
+                    <div class="grey">
+                        Punkt Poczty Polskiej
+                    </div>
+    </div>
+   
+
+
+
+    <div class="wybierz-inny" (click)="choseOtherPunkt()" >
+        Wybierz inny punkt
+    </div>
+    
+ </div>
+
+
+
+  
+
+    <!-- <app-pickup-point></app-pickup-point> -->
+
+  
+
+    
+
+   
+
+
+    
+   
+ </div>
+
+
+
+  <h5 style="padding-top: 1rem; padding-bottom: 0rem; margin-bottom: 0rem;">Dostawa na adres</h5>
+
+
+   <div class="odbior-w-punkcie checkboxy">
+
+    <div class="pkt checkboxy"> 
+    <input type="checkbox" id="inpost-kurier" class="styled-checkbox" [(ngModel)]="checkboxInpostKurier" (change)="choseKurierInpost()"  />
+    <label for="inpost-kurier" class="hover">InPost Kurier
+
+        <div style="font-size: 0.7rem; font-weight: 700; color: #4EAD61;" *ngIf="calculatedBasketPriceNumber() >= 79.99" >
+           darmowa dostawa
+       </div>
+
+    </label>
+
+
+    
+                    <div *ngIf="calculatedBasketPriceNumber() < 79.99" 
+     style="margin-left: auto; font-weight: 800;">
+  10.99 zł
+</div>
+
+        <!-- Gdy cena >= 79.99 -->
+        <div *ngIf="calculatedBasketPriceNumber() >= 79.99" 
+            style="margin-left: auto; font-weight: 800;  text-align: right;">
+          <div style="text-decoration: line-through; font-size: 0.8em; color: #888;">
+            10.99 zł
+          </div>
+          <div style="font-size: 1em; color: #000;">
+            0.00 zł
+          </div>
+        </div>
+
+    
+
+    </div>
+
+  <div class="pkt checkboxy"> 
+    <input type="checkbox" id="pocztex-kurier" class="styled-checkbox" [(ngModel)]="checkboxPocztexKurier" (change)="choseKurierPocztex()"  />
+    <label for="pocztex-kurier" class="hover">Pocztex Kurier
+
+      
+        <div style="font-size: 0.7rem; font-weight: 700; color: #4EAD61;" *ngIf="calculatedBasketPriceNumber() >= 79.99" >
+           darmowa dostawa
+       </div>
+
+    </label>
+
+
+
+    
+                    <div *ngIf="calculatedBasketPriceNumber() < 79.99" 
+     style="margin-left: auto; font-weight: 800;">
+  9.99 zł
+</div>
+
+        <!-- Gdy cena >= 79.99 -->
+        <div *ngIf="calculatedBasketPriceNumber() >= 79.99" 
+            style="margin-left: auto; font-weight: 800;  text-align: right;">
+          <div style="text-decoration: line-through; font-size: 0.8em; color: #888;">
+            9.99 zł
+          </div>
+          <div style="font-size: 1em; color: #000;">
+            0.00 zł
+          </div>
+        </div>
+
+
+    
+    </div>
+
+
+      <div class="pkt checkboxy" > 
+    <input type="checkbox" id="dhl-kurier" class="styled-checkbox" [(ngModel)]="checkboxDHLKurier" (change)="choseKurierDHL()"  />
+    <label for="dhl-kurier" class="hover" >DHL Kurier
+
+      
+        <div style="font-size: 0.7rem; font-weight: 700; color: #4EAD61;" *ngIf="calculatedBasketPriceNumber() >= 79.99" >
+           darmowa dostawa
+       </div>
+
+    </label>
+        
+
+    
+                    <div *ngIf="calculatedBasketPriceNumber() < 79.99" 
+     style="margin-left: auto; font-weight: 800;">
+  12.99 zł
+</div>
+
+        <!-- Gdy cena >= 79.99 -->
+        <div *ngIf="calculatedBasketPriceNumber() >= 79.99" 
+            style="margin-left: auto; font-weight: 800;  text-align: right;">
+          <div style="text-decoration: line-through; font-size: 0.8em; color: #888;">
+            12.99 zł
+          </div>
+          <div style="font-size: 1em; color: #000;">
+            0.00 zł
+          </div>
+        </div>
+
+
+
+    </div>
+
+
+    </div>
+
+
+
+
+
+</div>
+
+
+
+    <div class="left-column-3" id="payment">
+
+     <app-payment-method-component></app-payment-method-component>
+
+        
+
+
+
+    </div>
+
+
+
+    </div>
+
+
+    <div class="right-column">
+       
+
+        <div class="sticky-right" #rightCol>
+
+
+             <h5>Podsumowanie</h5>
+            
+            <div style="display: flex; flex-wrap: nowrap; justify-content: space-between">
+                <div>
+                   Wartość przedmiotów
+                </div>
+
+                <div style="font-weight: 700;">
+                {{ calculatedBasketPrice() }} zł
+                </div>
+
+            </div>
+            <div style="display: flex; flex-wrap: nowrap; justify-content: space-between">
+                         <div style="font-weight: 700;" > Dostawa </div>  
+               
+                         <div style="font-weight: 700;">
+                        {{kosztDostawy}} zł
+                         </div>
+            </div>
+
+            <hr style="margin: 10px 0; border: 0; border-top: 1px solid #ccc;">
+
+
+            <div style="display: flex; flex-wrap: nowrap; justify-content: space-between">
+              
+              <div>
+              Do zapłaty online
+              </div>
+
+              <div style="font-weight: 700;">
+              {{ (calculatedBasketPriceNumber() + kosztDostawy) | number:'1.2-2' }} zł
+            </div>
+
+            </div>
+
+
+            <div class="delivery-continue">
+
+                <button (click)="createOrder(formRef)" class="delivery" routerLink="/dostawa-i-platnosc" 
+                 >Kupuję i płacę</button>
+            </div>
+
+        </div>
+
+
+
+
+          <div class="normal-right" #rightCol>
+
+
+             <h4>Podsumowanie</h4>
+            
+            <div style="display: flex; flex-wrap: nowrap; justify-content: space-between">
+                
+              <div>Wartość przedmiotów</div>
+
+               <div  style="font-weight: 700;">
+                {{ calculatedBasketPrice() }} zł
+               </div>
+            </div>
+            <div style="display: flex; flex-wrap: nowrap; justify-content: space-between">
+                        <div> Dostawa </div>  
+                        <div  style="font-weight: 700;">
+                            {{kosztDostawy}} zł
+                        </div> 
+            </div>
+
+
+
+             <hr style="margin: 10px 0; border: 0; border-top: 1px solid #ccc;">
+
+
+            <div style="display: flex; flex-wrap: nowrap; justify-content: space-between">
+              
+              <div>
+              Do zapłaty online
+              </div>
+
+              <div style="font-weight: 700;">
+              {{ (calculatedBasketPriceNumber() + kosztDostawy) | number:'1.2-2' }} zł
+            </div>
+
+            </div>
+
+
+
+            <div class="delivery-continue">
+
+                <button (click)="createOrder(formRef)" class="delivery" routerLink="/dostawa-i-platnosc" 
+                 >Kupuję i płacę</button>
+            </div>
+
+        </div>
+
+
+
+
+
+            
+    </div>
+
+</div>

@@ -1,0 +1,115 @@
+
+.zalety {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.cecha {
+    margin: 1rem;
+    padding: 1rem;
+    height: 10rem;
+    background-color: gainsboro;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    flex: 33%;   
+}
+.opis h5 {
+    font-weight: 800;
+}
+
+.zdj {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;;
+}
+
+.zdj img {
+    height: 4rem;
+}
+
+.opis {
+    width: 70%;
+}
+
+
+
+
+@media (max-width: 1000px) {
+
+    .cecha {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+
+        height: 23rem;
+    }
+
+    .zdj {
+        flex: 100%;
+        width: 100%;
+    }
+
+
+    .opis {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+        flex-wrap: wrap;
+         flex: 100%;
+        width: 100%;
+        padding: 2rem;
+        font-size: 1rem;
+    }
+
+    .opis div {
+        width: 100%;
+        flex: 100%;
+    }
+
+
+
+
+
+}
+
+
+@media (max-width: 800px) {
+
+    .zalety { 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+
+    }
+
+}
+
+
+@media (max-width: 550px) {
+
+
+      .zalety { 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+
+    }
+    .cecha {
+        width: 100%;
+        flex: 100%;
+    }
+
+    .opis {
+        padding: 1rem;
+    }
+
+}

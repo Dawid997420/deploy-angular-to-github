@@ -1,0 +1,63 @@
+<h5>Metoda płatności</h5>
+
+<div class="pkt checkboxy">
+  <input
+    type="checkbox"
+    id="przelewy24"
+    class="styled-checkbox"
+    disabled
+    [checked]="selectedPaymentMethod === 'przelewy24'"
+    (change)="selectPaymentMethod('przelewy24')"
+  />
+  <label for="przelewy24">Przelewy24</label>
+
+  <img class="logo" src="przelewy24.webp"/>
+</div>
+
+<div class="pkt checkboxy">
+  <input
+    type="checkbox"
+    id="payU"
+    class="styled-checkbox"
+    [checked]="selectedPaymentMethod === 'payU'"
+    (change)="selectPaymentMethod('payU')"
+  />
+  <label for="payU">PayU</label>
+
+  <img class="logo" src="PayU.svg.png"/>
+</div>
+
+
+<div class="pkt checkboxy">
+  <input
+    type="checkbox"
+    id="przelewBankowy"
+    class="styled-checkbox"
+    disabled
+    [checked]="selectedPaymentMethod === 'przelewBankowy'"
+    (change)="selectPaymentMethod('przelewBankowy')"
+  />
+  <label for="przelewBankowy">Przelew bankowy</label>
+</div>
+
+<div class="pkt checkboxy">
+  <input
+    type="checkbox"
+    id="karta"
+    class="styled-checkbox"
+    disabled
+    [checked]="selectedPaymentMethod === 'karta'"
+    (change)="selectPaymentMethod('karta')"
+  />
+  <label for="karta">Karta kredytowa/debetowa</label>
+
+  <div class="logo">
+
+    <img style="width: 25%" src="visa.svg" />
+    <img style="width: 25%;" src="mastercard.svg" />
+    <img style="width: 25%;" src="amex.svg" />
+    <img style="width: 25%;" src="discover.svg" />
+
+  </div>
+
+</div>

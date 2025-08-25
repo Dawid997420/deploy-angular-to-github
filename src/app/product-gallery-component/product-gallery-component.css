@@ -1,0 +1,47 @@
+.gallery-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+      overflow-x: hidden;
+
+}
+
+.gallery-track {
+  display: flex;
+  gap: 8px;
+  overflow: hidden;
+}
+
+.gallery-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  cursor: pointer;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  transition: transform 0.2s;
+}
+
+.gallery-image:hover {
+  transform: scale(1.05);
+}
+
+body {
+    overflow-x: hidden;
+}
+
+@media (max-width: 772px) { 
+
+
+    .gallery-wrapper {
+        overflow-x: hidden;
+        display: none;
+    }
+
+
+}
+
+
+button {
+    
+}

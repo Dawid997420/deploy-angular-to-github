@@ -1,0 +1,108 @@
+.basket-count {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    background-color: #007bff; /* niebieski */
+    background-color: #1DA1F2;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    box-shadow: 0 0 4px rgba(0,0,0,0.2);
+}
+
+
+.basket-wrapper {
+  position: relative;
+}
+
+.basket-dropdown {
+  position: absolute;
+  top: 100%; /* Tuż pod ikoną koszyka */
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  width: 450px;
+  z-index: 9999;
+
+  /* Nowe rzeczy: */
+  max-height: 400px;
+  overflow-y: auto;
+  scrollbar-width: thin; /* dla Firefox */
+  scrollbar-color: #ccc transparent;
+}
+
+/* Jeśli chcesz też ładny scroll w Chrome */
+.basket-dropdown::-webkit-scrollbar {
+  width: 6px;
+}
+.basket-dropdown::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 4px;
+}
+
+/* Produkt w liście koszyka */
+.basket-item {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    flex-direction: row;
+  font-size: 0.9rem;
+  padding: 0.25rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.empty-basket {
+  text-align: center;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+
+.name-prod {
+    flex: 60%;
+}
+
+.img-prod {
+    flex: 20%;
+}
+
+.price-prod {
+    padding-left: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    flex: 20%;
+}
+
+
+.go-basket {
+     background-color: #000000;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.4rem;
+  cursor: pointer;
+    width: 100%;
+    padding: 0.6rem;
+  transition: background-color 0.3s ease;
+}
+
+
+.deselected {
+    opacity: 0.4;
+  filter: grayscale(100%);
+}

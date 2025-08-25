@@ -1,0 +1,54 @@
+<div class="popup-overlay" *ngIf="visible">
+  <div class="popup-content">
+     <img src="x.svg" class="close-icon"  (click)="closePopup()" />
+
+    <h4> Dodałeś do koszyka:   </h4>
+
+    <div class="product-popup">
+
+        <!-- <img class="popup-product-icon" src="https://pub-eaf5d0855a7746eb922ec009fdfa88de.r2.dev/Maskotka LABUBU Niespodzianka z Brelokiem – Styl PopMart, Prezent/1.jpeg"> -->
+        <img class="popup-product-icon" [src]="popupService.product.images[0].url" >
+        
+        
+        <p>
+            <strong class="price-big" >{{displayPrice( popupService.product.price)}} zł </strong> <br>
+            <!-- Maskotka LABUBU Niespodzianka z Brelokiem – Styl PopMart, Prezent  -->
+            
+            {{popupService.product.name}} 
+        </p>
+
+        </div>
+
+
+        <div class="pasek-dostawy">
+        <div class="progress-bar-wrapper">
+            <div class="progress-bar-fill" [style.width.%]="calculatePercentage()"></div>
+        </div>
+
+            <p class="info-dostawy" *ngIf="(this.calculatedBasketPriceNumber() * 100 ) >= 7999">
+                Osiągnąłeś próg  <strong> darmowej dostawy! </strong>
+            </p>
+              <p class="info-dostawy" *ngIf="(this.calculatedBasketPriceNumber() * 100 )< 7999">
+                Brakuje {{howMuchToFreeDelivery()}} zł do <strong> darmowej dostawy </strong>
+            </p>
+    
+    </div>
+    
+    <div class="propositions">
+    <h4> Zamów w jednej przesyłce   </h4>
+
+    </div>
+        
+    
+
+        <div class="buttony">
+
+            <button  (click)="closePopup()"   class="buy-more" >Kupuj dalej</button>
+
+            <button routerLink="/koszyk" (click)="closePopup()"  class="go-basket">Idź do koszyka</button>
+        </div>
+
+    
+     
+  </div>
+</div>

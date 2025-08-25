@@ -1,0 +1,162 @@
+.page {
+    display: flex;
+     justify-content: center; 
+    align-items: flex-start; 
+    flex-wrap: nowrap;
+    height: auto;
+        padding-left:1rem;
+        background-color: #F4F4F4;
+        margin: auto;
+      padding: auto;
+        
+}
+
+
+@media only screen and (min-width: 1025px) {
+    .page {
+        max-width: 1648px;
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+}
+
+
+
+
+.cat-name {
+    width: 100%;
+    padding: 1rem;
+    padding-bottom: 0rem;
+}
+
+.sciezka {
+    width: 100%;
+    padding-top: 0rem;
+    padding: 1rem;
+}
+
+.podkategorie {
+    display: flex;
+    /* justify-content: flex-start;
+    align-items: flex-start; */
+    height: auto;
+    background-color: rgb(255, 255, 255);
+    margin-right: auto;
+    padding: 1rem;
+    width: 100%;
+    
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.wracac {
+
+    font-size: 0.8rem;
+}
+
+label {
+    font-size: 0.8rem;
+}
+
+.strona-g {
+      text-decoration: underline;
+      cursor: pointer;
+        color: #1DA1F2;
+
+}
+
+.subcategory-list {
+  list-style: none;        /* Usuwa kropki */
+  padding-left: 0;         /* Usuwa domyślny padding */
+  margin: 0;
+  margin-top: 0.5rem;
+}
+
+.subcategory-list li {
+  margin: 0.3rem 0;        /* Odstęp między elementami */
+  font-size: 0.8rem;
+}
+
+
+.subcategory-list li:hover {
+  margin: 0.3rem 0;        /* Odstęp między elementami */
+  font-size: 0.8rem;
+  color: #1DA1F2;
+  cursor: pointer;
+}
+
+
+
+.subcategory-li.active {
+    margin: 0.3rem 0;        /* Odstęp między elementami */
+  font-size: 0.8rem;
+  color: #1DA1F2;
+  cursor: pointer;
+}
+
+
+a.non {
+  all: unset;
+  cursor: pointer; /* dodaj, jeśli chcesz, żeby wyglądało jak klikalne */
+  text-decoration: none; /* opcjonalne, jeśli nie używasz `all: unset` */
+  color: inherit;         /* dziedziczenie koloru tekstu */
+  display: inline-block;  /* pozwala np. na padding/margines */
+}
+
+
+.price-range {
+  width: 100%;
+  display: flex;
+  justify-content: space-between; /* 👈 odsuwa elementy na boki */
+  align-items: center;
+}
+
+.price-range label {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.price-range input {
+  padding: 0.3rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 6rem;
+  font-size: 1rem;
+  text-align: center;
+
+  
+}
+
+.col-left {
+  margin-left: auto;
+  margin-right: auto;
+    flex:20%;
+}
+
+.col-right {
+   margin-left: auto;
+  margin-right: auto;
+    padding: 1rem;
+    flex: 80%;
+}
+
+
+@media (max-width: 772px) { 
+
+  .podkategorie {
+    display: none;
+  }
+
+  .page {
+    flex-wrap: wrap;
+    padding-left: 0rem;
+  }
+
+  .col-right {
+    padding: 0rem;
+  }
+
+
+}

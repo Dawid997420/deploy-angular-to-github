@@ -1,0 +1,79 @@
+
+
+<!-- Desktop menu -->
+<li class="nav-item dropdown custom-kategorie" >
+  <a class="nav-link btn btn-kategorie d-flex align-items-center" href="#" role="button">
+    <img src="CATEG.png" class="icon-kategorie me-2" alt="Ikona kategorii" />
+    Kategorie
+  </a>
+
+  <ul class="dropdown-menu">
+    <li class="dropdown-submenu highlighted" *ngFor="let cat of categories" (mouseenter)="setActive(cat)" 
+      [ngClass]="{ 'highlighted': activeCategory === cat }"
+
+>
+      <a class="dropdown-item" [routerLink]="['/category', slugify( cat.name )]">
+        {{ cat.name }} 
+      </a>
+
+      <!-- Submenu -->
+
+      <ul class="submenu" *ngIf="activeCategory === cat">
+
+        <div class="centrowisko">
+                <li *ngFor="let sub of cat.subcategories">
+                <a class="dropdown-item drop-sub"  [routerLink]="['/category/' + cat.name, slugify( sub)]" >{{  sub }}</a>
+              </li>
+        </div>
+      
+      </ul>
+
+    </li>
+  </ul>
+</li>
+
+
+ <a class="category" (click)="categoryService.toggleCategories()">
+      <img src="CATEG.png" style="height: 1.5rem"  />
+ </a>
+
+ <div *ngIf="categoryService.showCategories" (click)="categoryService.closeCategories()"  class="close-icon">
+  
+  <img src="X.png">
+</div>
+
+<!-- Overlay z kategoriami -->
+<div class="category-overlay" *ngIf="categoryService.showCategories">
+
+    
+
+
+
+       
+        <div class="category-content">
+
+
+    <!-- <button class="close-button" (click)="toggleCategories()">✕</button> -->
+    <ul *ngFor="let cat of categoryService.selectedCategories">
+      <li class="mob-sub-cat" (click)="categoryService.selectCategory(cat)"  [routerLink]="['/category', slugify( cat )]" >{{cat}}</li>
+      
+    </ul>
+
+
+     <div class="chosenCategoryMobile" *ngIf="isMainCategory()">
+      <button class="btn-kategorie" (click)="categoryService.selectMainCategory(categoryService.chosenCategoryMobile)" [routerLink]="['/category', slugify( categoryService.chosenCategoryMobile )]" >
+     Przejdź do {{  categoryService.chosenCategoryMobile }}
+
+      </button>
+  </div>
+
+  </div>
+
+
+   
+  
+
+
+  
+</div>
+

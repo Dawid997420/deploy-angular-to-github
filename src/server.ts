@@ -8,25 +8,21 @@ import express from 'express';
 import { join } from 'node:path';
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
-
 const app = express();
 const angularApp = new AngularNodeAppEngine();
 
-/**
- * Example Express Rest API endpoints can be defined here.
- * Uncomment and define endpoints as necessary.
- *
- * Example:
- * ```ts
- * app.get('/api/{*splat}', (req, res) => {
- *   // Handle API request
- * });
- * ```
- */
+// ✅ Włącz trust proxy, żeby Express widział x-forwarded-proto
+app.enable('trust proxy');
 
-/**
- * Serve static files from /browser
- */
+// ✅ Middleware do wymuszenia HTTPS
+app.use((req, res, next) => {
+  if (req.headers['x-forwarded-proto'] !== 'https') {
+    return res.redirect(`https://${req.headers.host}${req.url}`);
+  }
+  next();
+});
+
+// Serve static files
 app.use(
   express.static(browserDistFolder, {
     maxAge: '1y',
@@ -35,9 +31,7 @@ app.use(
   }),
 );
 
-/**
- * Handle all other requests by rendering the Angular application.
- */
+// Angular SSR handler
 app.use((req, res, next) => {
   angularApp
     .handle(req)
@@ -47,19 +41,13 @@ app.use((req, res, next) => {
     .catch(next);
 });
 
-/**
- * Start the server if this module is the main entry point.
- * The server listens on the port defined by the `PORT` environment variable, or defaults to 4000.
- */
+// Start server
 if (isMainModule(import.meta.url)) {
- const port = Number(process.env['PORT']) || 4000;
-app.listen(port, '0.0.0.0', (error) => {
-  if (error) throw error;
-  console.log(`Node Express server listening on http://0.0.0.0:${port}`);
-});
+  const port = Number(process.env['PORT']) || 4000;
+  app.listen(port, '0.0.0.0', (error) => {
+    if (error) throw error;
+    console.log(`Node Express server listening on http://0.0.0.0:${port}`);
+  });
 }
 
-/**
- * Request handler used by the Angular CLI (for dev-server and during build) or Firebase Cloud Functions.
- */
 export const reqHandler = createNodeRequestHandler(app);

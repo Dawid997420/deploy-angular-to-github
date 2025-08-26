@@ -14,6 +14,6 @@ server.get('*', async (req: Request, res: Response) => {
   res.render('index', { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
 });
 
-server.listen(PORT, () => {
-  console.log(`Node Express server listening on http://localhost:${PORT}`);
+server.listen(PORT, '0.0.0.0', () => {
+  console.log(`Node Express server listening on http://0.0.0.0:${PORT}`);
 });
